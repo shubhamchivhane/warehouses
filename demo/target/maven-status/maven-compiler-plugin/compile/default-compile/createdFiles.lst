@@ -1,0 +1,7 @@
+com\anticpu\service\ShipmentTypeService.class
+com\anticpu\service\impl\ShipmentTypeServiceImpl.class
+com\anticpu\controller\ShipmentTypeController.class
+com\anticpu\model\ShipmentType.class
+com\anticpu\model\Uom.class
+com\anticpu\repository\ShipmentTypeRepository.class
+com\anticpu\DemoApplication.class

@@ -1,0 +1,91 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <title>Shipment Type Form</title>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>SHIPMENT TYPE</h2>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/st/saveShipmentType}" method="POST">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="shipmentMode">Shipment Mode</label>
+                            </div>
+                            <div class="col-4">
+                                <select name="shipmentMode" id="shipmentMode" class="form-control">
+                                    <option value="">-SELECT-</option>
+                                    <option value="AIR">AIR</option>
+                                    <option value="TRUCK">TRUCK</option>
+                                    <option value="SHIP">SHIP</option>
+                                </select>
+                            </div>
+                            <div class="col-5">
+                                <span id="shipmentModeError"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="shipmentCode">Shipment Code</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="shipmentCode" id="shipmentCode" class="form-control" />
+                            </div>
+                            <div class="col-5">
+                                <span id="shipmentCodeError"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="enableShipment">Enable Shipment</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="enableShipment" id="enableShipment1" value="enable" /> Enable
+                                <input type="radio" name="enableShipment" id="enableShipment2" value="disable" /> Disable
+                            </div>
+                            <div class="col-5">
+                                <span id="enableShipmentError"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="shipmentGrade">Shipment Grade</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="radio" name="shipmentGrade" id="shipmentGrade1" value="A" /> A
+                                <input type="radio" name="shipmentGrade" id="shipmentGrade2" value="B" /> B
+                                <input type="radio" name="shipmentGrade" id="shipmentGrade3" value="C" /> C
+                            </div>
+                            <div class="col-5">
+                                <span id="shipmentGradeError"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="shipmentDescription">Description</label>
+                            </div>
+                            <div class="col-4">
+                                <textarea name="shipmentDescription" id="shipmentDescription" class="form-control"></textarea>
+                            </div>
+                            <div class="col-5">
+                                <span id="shipmentDescriptionError"> </span>
+                            </div>
+                        </div>
+                        </br>
+                        <input type="submit" value="Add Shipment Type" class="btn btn-primary"/>
+                        <a href="/st/allst" class="btn btn-primary">View All Shipment Type</a>
+                    </form>
+                </div>
+                <div class="card-footer bg-info text-center ">
+                    <span class="text-white" th:text="${message}"></span>
+            </div>
+            </div>
+            
+            
+        </div>
+
+    </body>
+</html>

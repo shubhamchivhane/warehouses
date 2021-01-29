@@ -1,0 +1,69 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <title>Shipment Type Form</title>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>SHIPMENT TYPE</h2>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/uom/saveUom}" method="POST">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="uomType">Shipment Mode</label>
+                            </div>
+                            <div class="col-4">
+                                <select name="uomType" id="uomType" class="form-control">
+                                    <option value="">-SELECT-</option>
+                                    <option value="PACKAGING_NO">PACKAGING NO</option>
+                                    <option value="PACKAGING">PACKAGING</option>
+                                    <option value="NA">-NA-</option>
+                                </select>
+                            </div>
+                            <div class="col-5">
+                                <span id="uomTypeError"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="uomModel">Shipment Code</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="uomModel" name="uomModel"
+								class="form-control" />
+                            </div>
+                            <div class="col-5">
+                                <span id="uomModelError"> </span>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="uomDescription">Description</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="uomDescription" name="uomDescription"
+								class="form-control" />
+                            </div>
+                            <div class="col-5">
+                                <span id="uomDescriptionError"> </span>
+                            </div>
+                        </div>
+                        </br>
+                        <input type="submit" value="Add UOM" class="btn btn-primary"/>
+                        <a href="/uom/alluom" class="btn btn-primary">View All UOM</a>
+                    </form>
+                </div>
+                <div class="card-footer bg-info text-center ">
+                    <span class="text-white" th:text="${message}"></span>
+            </div>
+            </div>
+            
+            
+        </div>
+
+    </body>
+</html>

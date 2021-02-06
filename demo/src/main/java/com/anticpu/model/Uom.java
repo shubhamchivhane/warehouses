@@ -18,5 +18,12 @@ public class Uom {
 	private String uomModel;
 	private String uomDescription;
 	
+	@Override
+	public String toString() {
+		return "Uom [id=" + id + ", uomType=" + uomType + ", uomModel=" + uomModel + ", uomDescription="
+				+ uomDescription + "]";
+	}
+	
+	
 	
 }

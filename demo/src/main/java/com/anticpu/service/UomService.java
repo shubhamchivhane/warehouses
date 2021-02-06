@@ -11,7 +11,7 @@ public interface UomService {
 	List<Uom> getUomsList();
 	void deleteUom(Integer id);
 	boolean isUomExist(Integer id);
-	Uom getShipmentById(Integer Id);
+	Uom getUomById(Integer Id);
 	Optional<Uom> getOneUom(Integer id);
 	void updateUom(Uom uom);
 }

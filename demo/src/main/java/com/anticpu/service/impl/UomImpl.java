@@ -26,7 +26,7 @@ public class UomImpl implements UomService {
 
 		Uom u = repo.save(uom);
 		LOGGER.info("uom u ="+u);
-		return u.getId();
+		return 1;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class UomImpl implements UomService {
 	}
 
 	@Override
-	public Uom getShipmentById(Integer Id) {
+	public Uom getUomById(Integer Id) {
 		LOGGER.info("Inside getShipmentById()="+Id);
 		return repo.getOne(Id);
 	}

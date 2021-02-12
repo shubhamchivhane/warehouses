@@ -91,7 +91,7 @@
 			  else
 			  {
 			  $("#uomTypeError").hide();
-			    uomtypeerr = true;
+			    uommodeerr = true;
 			  }
 			 return uomtypeerr;
 			}
@@ -140,7 +140,7 @@
                validate_uomType();
             })
             $("#uomModel").keyup(function(){
-                alert("workign");
+               
                 validate_uomModel();
             })
             $("#uomDescription").keyup(function(){
@@ -148,14 +148,18 @@
             })
 
             $("#uomform").submit(function(){
-               
                 validate_uomType();
                 validate_uomModel();
                 validate_uomDescription();
-                 if( uommodeerr && uomtypeerr && uomDescriptionErr ) 
-                   return true; //means submit form
-                else 
-                   return false;//dont  submit form 
+                 
+                 if( uommodeerr && uomtypeerr && uomDescriptionErr )
+                 {
+                    return true; //means submit form
+                 } 
+                else
+                {
+                    return false;//dont  submit form 
+                } 
             })
 
 			});

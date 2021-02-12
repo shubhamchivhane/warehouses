@@ -1,0 +1,65 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+</head>
+<title>File Upload </title>
+<body>
+		<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>UOM TYPE</h2>
+			</div>
+			<div class="card-body">
+				<form id="uomform" th:action="@{/doc/uploadDoc}" enctype="multipart/form-data"  method="POST">
+					<div class="row">
+						<div class="col-3">
+							<label for="docId">Doc ID</label>
+						</div>
+						<div class="col-4">
+							<input type="text" id="docId" name="docId"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="docIdError"> </span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label for="docData">File</label>
+						</div>
+						<div class="col-4">
+							<input type="file" id="docData" name="docData"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="docDataError"> </span>
+						</div>
+					</div>
+					</br> <input type="submit" value="Upload" class="btn btn-primary" /> 
+				</form>
+			</div>
+			<div class="card-footer text-center ">
+				<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>FILE NAME</th>
+		<th>LINK</th>
+	</tr>
+	<tr th:each="ob:${list}">
+		<th th:text="${ob[0]}"></th>
+		<th th:text="${ob[1]}"></th>
+		<th><a th:href="@{/doc/download(id=${ob[0]})}">DOWNLOAD</a></th>
+	</tr>
+</table>
+			</div>
+		</div>
+</div>
+
+<div>
+
+</div>
+</body>
+</html>

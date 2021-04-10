@@ -1,6 +1,7 @@
 package com.anticpu.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.anticpu.model.OrderMethod;
@@ -15,4 +16,5 @@ public interface OrderMethodService {
 	Optional<OrderMethod> getOneOrderMethod(Integer id);
 	void updateOrderMethod(OrderMethod orderMethod);
 	boolean isOrderMethodExistByCode(String orderCode);
+	Map<Integer, String> getMethodOrderIdAndCode();
 }

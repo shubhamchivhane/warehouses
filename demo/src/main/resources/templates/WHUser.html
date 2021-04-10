@@ -1,0 +1,136 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+</head>
+<title>Shipment Type Form</title>
+<body>
+	<div class="container">
+		    <div th:insert="fragments/commonui :: userheader"></div>
+		<div th:insert="fragments/commonui :: usermenu"></div>
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h2>WAREHOUSE USER TYPE</h2>
+			</div>
+			<div class="card-body">
+				<form id="uomform" th:action="@{/whuser/savewhuser}" method="POST">
+
+                    <div class="row">
+						<div class="col-3">
+							<label>User Type</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" name="userType" value="Vendor" />Vendor 
+                            <input type="radio" name="userType" value="Customer" />Customer
+						</div>
+						<div class="col-5">
+							<span id="userTypeError"></span>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-3">
+							<label for="userCode">UOM Code</label>
+						</div>
+						<div class="col-4">
+							<input type="text" id="userCode" name="userCode"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="userCodeError"> </span>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-3">
+							<label for="usedFor">Used For</label>
+						</div>
+						<div class="col-4">
+							<input type="text" id="usedFor" name="usedFor"
+								class="form-control" readonly/>
+						</div>
+						<div class="col-5">
+							<span id="usedForError"> </span>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-3">
+							<label for="userEmail">User Email</label>
+						</div>
+						<div class="col-4">
+							<input type="text" id="userEmail" name="userEmail"
+								class="form-control"/>
+						</div>
+						<div class="col-5">
+							<span id="userEmailError"> </span>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-3">
+							<label for="userContact">User Contact</label>
+						</div>
+						<div class="col-4">
+                                <textarea id="userContact" name="userContact" class="form-control"></textarea>
+						</div>
+						<div class="col-5">
+							<span id="userContactError"> </span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label for="userIdType">User ID Type</label>
+						</div>
+						<div class="col-4">
+							<select name="userIdType" id="userIdType" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="AADHAR CARD">AADHAR CARD</option>
+								<option value="PAN CARD">PAN CARD</option>
+								<option value="OTHER">OTHER</option>
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="uomTypeError"> </span>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-3">
+							<label for="other">IF OTHER</label>
+						</div>
+						<div class="col-4">
+							<input type="text" id="other" name="other"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="otherError"> </span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<label for="userIdNumber">ID Number</label>
+						</div>
+						<div class="col-4">
+							<input type="number" id="userIdNumber" name="userIdNumber"
+								class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="userIdNumberError"> </span>
+						</div>
+					</div>
+
+			
+					</br> <input type="submit" value="Add WH USER TYPE" class="btn btn-primary" /> 
+				</form>
+			</div>
+			<div class="card-footer bg-info text-center ">
+				<span class="text-white" th:text="${message}"></span>
+			</div>
+		</div>
+
+
+	</div>
+	<script type="text/javascript">
+
+$(document).ready(function() {
+alert("working");
+    $('#example').DataTable();
+} );
+</script>
+    </body>
+    </html>
+    

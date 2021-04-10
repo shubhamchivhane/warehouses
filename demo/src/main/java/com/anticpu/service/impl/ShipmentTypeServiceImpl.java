@@ -1,6 +1,7 @@
 package com.anticpu.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.anticpu.model.ShipmentType;
 import com.anticpu.repository.ShipmentTypeRepository;
 import com.anticpu.service.ShipmentTypeService;
+import com.anticpu.util.AppUtil;
 
 @Service
 public class ShipmentTypeServiceImpl implements ShipmentTypeService{
@@ -56,6 +58,12 @@ public class ShipmentTypeServiceImpl implements ShipmentTypeService{
 	@Override
 	public Optional<ShipmentType> getOneShipmentType(Integer id) {
 		return repository.findById(id);
+	}
+
+	@Override
+	public Map<Integer, String> getIdAndShipmentCode() {
+		  List<Object []> ob=repository.getIdAndVendor();
+		return AppUtil.convertToMap(ob);
 	}
 
 	

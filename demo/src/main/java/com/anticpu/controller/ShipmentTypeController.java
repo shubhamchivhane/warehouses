@@ -49,7 +49,7 @@ public class ShipmentTypeController {
 
 		// send data to UI for HTML table
 		m.addAttribute("shipmenttypelist", list);
-
+		
 		// Go back to UI page
 		return "ShipmentLists";
 	}

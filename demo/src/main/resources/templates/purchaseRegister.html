@@ -1,0 +1,133 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+</head>
+<title>Purchase Order</title>
+</head>
+<body>
+		<div class="container">
+		 <div th:insert="fragments/commonui :: userheader"></div>
+		<div th:insert="fragments/commonui :: usermenu"></div>
+		<div class="card">
+
+			<div class="card-header bg-primary text-white text-center">
+				<h3>PURCHASE ORDER REGISTER PAGE</h3>
+			</div>
+
+			<div class="card-body">
+				<form id="orderMethodForm" th:action="@{/purchase/savePurchase}" method="post" th:object="${purchaseOrder}">
+					<!-- row#1 -->
+					<div class="row">
+						<div class="col-3">
+							<label>Order Code</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{orderCode}" class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="orderCodeError"></span>
+						</div>
+					</div>
+					</br>
+					
+					 <div class="row">
+                            <div class="col-3">
+                                <label for="shipment">Shipment Code</label>
+                            </div>
+                            <div class="col-4">
+                                <select th:field="*{shipment.id}" id="shipment" class="form-control">
+                                   <option th:each="ob:${shipmentMap}"
+							            th:text="${ob.value}"
+								    th:value="${ob.key}"/>
+                                </select>
+                            </div>
+                            <div class="col-5">
+                                <span id="shipmentError"> </span>
+                            </div>
+                        </div>
+					</br>
+					 <div class="row">
+                            <div class="col-3">
+                                <label for="shipment">Vendor</label>
+                            </div>
+                            <div class="col-4">
+                                <select th:field="*{warehouse.id}" id="warehouse" class="form-control">
+                                   <option th:each="ob:${vendors}"
+							            th:text="${ob.value}"
+								    th:value="${ob.key}"/>
+                                </select>
+                            </div>
+                            <div class="col-5">
+                                <span id="warehouseError"> </span>
+                            </div>
+                        </div>
+					</br>
+					
+					<div class="row">
+						<div class="col-3">
+							<label>Reference Number</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{referenceNumber}" id="referenceNumber" class="form-control" />
+						</div>
+						<div class="col-5">
+							<span id="referenceNumberError"></span>
+						</div>
+					</div>
+					</br>
+					<div class="row">
+						<div class="col-3">
+							<label>Quality Check</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{qualityCheck}"  value="required" />Required 
+							<input type="radio" th:field="*{qualityCheck}"  value="not required" />Not Required
+							
+						</div>
+						<div class="col-5">
+							<span id="qualityCheckError"></span>
+						</div>
+					</div>
+					</br>
+					<div class="row">
+                        <div class="col-3">
+                            <label>DESCRIPTION</label>
+                        </div>
+                        <div class="col-4">
+                            <textarea th:field="*{description}" class="form-control"></textarea>
+                        </div>
+                        <div class="col-5">
+                            <span id="descriptionError"></span>
+                        </div>
+                    </div>
+				
+					
+					<div class="row">
+						<div class="col-3">
+							<label>Status</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{status}" class="form-control" readonly/>
+						</div>
+						<div class="col-5">
+							<span id="statusError"></span>
+						</div>
+					</div>
+					</br>
+
+					<input type="submit" value="Add Purchase Order" class="btn btn-success"/>
+				</form>
+			</div>
+			<!-- Card Body end -->
+
+			<div class="card-footer alert alert-success" th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</div>
+
+		</div>
+		<!-- card end -->
+	</div>
+	
+	
+</body>
+</html>

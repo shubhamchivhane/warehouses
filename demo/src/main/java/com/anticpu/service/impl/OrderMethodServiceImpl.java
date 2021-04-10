@@ -1,6 +1,7 @@
 package com.anticpu.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.anticpu.model.OrderMethod;
 import com.anticpu.repository.OrderMethodRepository;
 import com.anticpu.service.OrderMethodService;
+import com.anticpu.util.AppUtil;
 
 @Service
 public class OrderMethodServiceImpl implements OrderMethodService {
@@ -66,6 +68,13 @@ public class OrderMethodServiceImpl implements OrderMethodService {
 		boolean exist = count>0? true:false;
 		return exist;*/
 		return  repo.getOrderMethodCountByCode(orderCode) > 0;
+	}
+
+	@Override
+	public Map<Integer, String> getMethodOrderIdAndCode() {
+		List<Object []> list=repo.getMethodOrderIdAndCode();
+		Map<Integer, String> map=AppUtil.convertToMap(list);
+		return map;
 	}
 
 }

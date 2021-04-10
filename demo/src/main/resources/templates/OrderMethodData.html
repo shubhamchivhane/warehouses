@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
+	 <div th:insert="fragments/commonui :: userheader"></div>
+		<div th:insert="fragments/commonui :: usermenu"></div>
 		<div class="card">
 
 			<div class="card-header bg-primary text-white text-center">
@@ -33,7 +33,7 @@
 						<td th:text="${ob.orderAcpt}"></td>
 						<td th:text="${ob.orderDescription}"></td>
 						<td>
-							<a th:href="@{/om/delete(id=${ob.id})}"  class="btn btn-danger"> DELETE </a>
+							<a th:href="@{/om/delete(id=${ob.id})}" title="remove" class="btn btn-danger"> DELETE </a>
 							|
 							<a th:href="@{/om/edit(id=${ob.id})}"  class="btn btn-warning"> EDIT </a>
 						</td>
@@ -48,6 +48,13 @@
 
 		</div>
 	</div>
+	<script type="text/javascript">
+$(document).ready(function() {
+	$('a[title="remove"]').click(function(){
+		return confirm("Do You want to Delete Shipment Type?");
+	});
+});
+</script>
 
 </body>
 </html>

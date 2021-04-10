@@ -1,19 +1,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	</head>
-</head>
+   </head>
 <title>File Upload </title>
 <body>
 		<div class="container">
+		    <div th:insert="fragments/commonui :: userheader"></div>
+		<div th:insert="fragments/commonui :: usermenu"></div>
 		<div class="card">
 			<div class="card-header bg-primary text-white text-center">
 				<h2>UOM TYPE</h2>
 			</div>
 			<div class="card-body">
-				<form id="uomform" th:action="@{/doc/uploadDoc}" enctype="multipart/form-data"  method="POST">
+				 <form id="docCreateForm" th:action="@{/doc/uploadDoc}" method="POST" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-3">
 							<label for="docId">Doc ID</label>
@@ -61,5 +59,107 @@
 <div>
 
 </div>
+<script> 
+$(document).ready(function(){
+  alert("hi");
+    //1. hide error section
+    $("#docIdError").hide();
+    $("#docDataError").hide();
+
+    //2. define error variables
+    var docIdError = false;
+    var docDataError = false;
+
+    //3. define validate function
+    function validate_docId() {
+        var val = $("#docId").val();
+        alert(val);
+        var exp = /^[1-9][0-9]*$/;
+        if(val=='') {
+            $("#docIdError").show();
+            $("#docIdError").html("Enter <b> Document ID </b>");
+            $("#docIdError").css('color','red');
+            docIdError = false;
+        } else if(!exp.test(val)) {
+            $("#docIdError").show();
+            $("#docIdError").html("Invalid <b> Document ID </b>");
+            $("#docIdError").css('color','red');
+            docIdError = false;
+        } else {
+            $("#docIdError").hide();
+            docIdError = true;
+        }
+
+        return docIdError;
+    }
+
+    // nothing is selected -- only on submit
+    function validate_docObRequired() {
+        var val = $("#docData").val();
+        if(val=='') {
+            $("#docDataError").show();
+            $("#docDataError").html("Choose <b> one File</b>");
+            $("#docDataError").css('color','red');
+        }
+        return docDataError;
+    }
+
+    // on change file
+    function validate_docOb(ob) {
+        // file details
+        var fname = ob.name;
+        var fsize = ob.size; // bytes 1024 B = 1 KB
+           alert(fsize);
+        console.log(ob);
+        var fext = fname.substring(fname.lastIndexOf(".") + 1);
+          console.log("selected file ext is =>"+fext);
+        var allowedExt = [ "png", "jpg", "jpeg", "doc", "docx", "zip" ];
+
+        if($.inArray(fext,allowedExt) == -1) { //if not exist
+            $("#docDataError").show();
+            $("#docDataError").html("Allowed Files <b>" + allowedExt +"</b>");
+            $("#docDataError").css('color','red');
+            docDataError = false;
+        } else if(fsize <= 1024 * 20) {  // Min 20 KB
+            $("#docDataError").show();
+            $("#docDataError").html("File <b> Min Size 20 KB</b>");
+            $("#docDataError").css('color','red');
+            docDataError = false;
+        } else if(fsize > 1024 * 1024 * 10) {  // Max 10 MB
+            $("#docDataError").show();
+            $("#docDataError").html("File <b> Max Size 10 MB</b>");
+            $("#docDataError").css('color','red');
+            docDataError = false;
+        } else {
+            $("#docDataError").hide();
+            docDataError = true;
+        }
+
+        return docDataError;
+    }
+
+    //4. link with action events
+    $("#docId").keyup(function(){
+        validate_docId();
+    })
+    $('input[type="file"][name="docData"]').change(function(){
+        validate_docOb(this.files[0]);        
+        //validate_docOb(this.files[1]);
+        //validate_docOb(this.files[2]);
+    })
+
+
+    //5. on submit
+    $("#docCreateForm").submit(function(){
+     alert("checking form");
+        validate_docId();
+        validate_docObRequired();
+
+        if(docIdError && docDataError) return true;
+        else return false;
+    })
+
+})
+</script> 
 </body>
 </html>

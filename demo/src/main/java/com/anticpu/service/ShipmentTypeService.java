@@ -1,6 +1,7 @@
 package com.anticpu.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.anticpu.model.ShipmentType;
@@ -14,5 +15,7 @@ public interface ShipmentTypeService {
 	ShipmentType getShipmentById(Integer Id);
 	Optional<ShipmentType> getOneShipmentType(Integer id);
 	void updateShipmentType(ShipmentType shipmentType);
+	
+	Map<Integer,String> getIdAndShipmentCode();
 	
 }

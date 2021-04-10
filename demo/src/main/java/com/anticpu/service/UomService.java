@@ -1,6 +1,7 @@
 package com.anticpu.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.anticpu.model.Uom;
@@ -14,4 +15,5 @@ public interface UomService {
 	Uom getUomById(Integer Id);
 	Optional<Uom> getOneUom(Integer id);
 	void updateUom(Uom uom);
+	Map<Integer, String> getUomIdAndModel();
 }
